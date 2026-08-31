@@ -1,1 +1,275 @@
-<h>Salespage</h>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hypertrophy Codex</title>
+    <style>
+        /* Modern Design System Tokens - Updated for Dark Mode */
+        :root { 
+            --bg-color: #0f172a; /* Dark slate background */ 
+            --card-bg: #1e293b; /* Darker slate card canvas */ 
+            --text-main: #f8fafc; /* Crisp off-white main text */ 
+            --text-muted: #94a3b8; /* Muted grey subtext */ 
+            --primary: #3b82f6; /* Bright blue primary button */ 
+            --primary-hover: #60a5fa; /* Lighter blue hover state */ 
+            --accent: #34d399; /* Vibrant green accent checkmarks */ 
+            --border: #334155; /* Soft slate borders */ 
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1); 
+            --radius: 12px; 
+        } 
+        
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        } 
+        
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            padding: 20px 15px; 
+        } 
+        
+        .container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            border-radius: var(--radius); 
+            box-shadow: var(--shadow); 
+            overflow: hidden; 
+        } 
+        
+        /* Hero Image Container */ 
+        .cover-wrapper { 
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); /* Dark gradient header */ 
+            padding: 40px 20px; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border); 
+        } 
+        
+        /* Image Display Layout Styles */ 
+        .book-image { 
+            max-width: 100%; 
+            width: 180px; /* Adjust this value to resize your image */ 
+            height: auto; 
+            border-radius: 4px 8px 8px 4px; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); 
+            display: block; 
+            margin: 0 auto; 
+        } 
+        
+        /* Main Content Details */ 
+        .content { 
+            padding: 30px 24px; 
+        } 
+        
+        .tag { 
+            display: inline-block; 
+            background: #1e3a8a; /* Deep blue tag background */ 
+            color: #93c5fd; /* Soft blue tag text */ 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            padding: 4px 10px; 
+            border-radius: 20px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            margin-bottom: 12px; 
+        } 
+        
+        h1 { 
+            font-size: 1.75rem; 
+            line-height: 1.25; 
+            margin-bottom: 8px; 
+            letter-spacing: -0.02em; 
+        } 
+        
+        .author { 
+            font-size: 0.9rem; 
+            color: var(--text-muted); 
+            margin-bottom: 20px; 
+        } 
+        
+        .price-tag { 
+            font-size: 2rem; 
+            font-weight: 800; 
+            color: var(--text-main); 
+            margin-bottom: 24px; 
+            display: flex; 
+            align-items: baseline; 
+            gap: 4px; 
+        } 
+        
+        .price-tag span { 
+            font-size: 1rem; 
+            color: var(--text-muted); 
+            font-weight: 400; 
+        } 
+        
+        /* High-Conversion Pricing Button */ 
+        .btn-checkout { 
+            display: block; 
+            width: 100%; 
+            background-color: var(--primary); 
+            color: white; 
+            text-align: center; 
+            padding: 16px; 
+            border-radius: var(--radius); 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            text-decoration: none; 
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.2); 
+            transition: all 0.2s ease; 
+            margin-bottom: 16px; 
+        } 
+        
+        .btn-checkout:hover { 
+            background-color: var(--primary-hover); 
+            transform: translateY(-1px); 
+        } 
+        
+        /* MoR Safety Trust Notice */ 
+        .trust-banner { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+            font-size: 0.8rem; 
+            color: var(--text-muted); 
+            background: #1e293b; /* Dark background for trust banner */ 
+            padding: 12px; 
+            border-radius: 8px; 
+            margin-bottom: 30px; 
+            border: 1px solid var(--border); 
+        } 
+        
+        /* Bullet Features Layout */ 
+        .features-list { 
+            list-style: none; 
+            margin-bottom: 30px; 
+        } 
+        
+        .features-list li { 
+            position: relative; 
+            padding-left: 28px; 
+            margin-bottom: 14px; 
+            font-size: 0.95rem; 
+            color: var(--text-muted); 
+            } 
+            
+        .features-list li::before { 
+            content: "✓"; 
+            position: absolute; 
+            left: 0; 
+            color: var(--accent); 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+            top: -2px; 
+        } 
+        
+        /* Structured Mini-FAQ Section */ 
+        .faq-section { 
+            border-top: 1px solid var(--border); 
+            padding-top: 24px; 
+        } 
+        
+        .faq-section h3 { 
+            font-size: 1.1rem; 
+            margin-bottom: 16px; 
+        } 
+        
+        .faq-item { 
+            margin-bottom: 16px; 
+        } 
+        
+        .faq-q { 
+            font-weight: 600; 
+            font-size: 0.9rem; 
+            margin-bottom: 4px; 
+        } 
+        
+        .faq-a { 
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
+        } 
+
+        /* Copyright Footer Styles */
+        .footer-disclaimer {
+            text-align: center;
+            padding: 30px 15px 10px 15px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Hero Image Container -->
+        <div class="cover-wrapper">
+            <!-- Replace 'your-image-source.jpg' with your actual cover image path -->
+            <img src="Ebook-Cover.png" alt="The Hypertrophy Codex Book Cover" class="book-image">
+        </div>
+
+        <!-- Main Content Details -->
+        <div class="content">
+            <span class="tag">Digital Ebook</span> <span class="tag">PDF</span>
+            <h1>The Hypertrophy Codex: Evidence-based training for sustained growth</h1>
+            <div class="author">By WANDERLXT</div>
+
+            <div class="price-tag">$10.00 <span>USD</span></div>
+
+            <a href="#" class="btn-checkout">Buy</a>
+
+            <!-- MoR Safety Trust Notice -->
+            <div class="trust-banner">
+                <span>🔒 Secure Global Card Checkout via Dodo Payments Merchant of Record</span>
+            </div>
+
+            <!-- Bullet Features Layout -->
+            <ul class="features-list">
+                <li>Instant File Access: Receive your PDF & EPUB download files securely immediately after purchase.</li>
+                <li>Universal Format: Formatted cleanly for seamless reading on smartphones, tablets, Kindles, and laptops.</li>
+                <li>Actionable Blueprint: Comprehensive guide to muscle building for beginner and intermediate bodybuilders.</li>
+            </ul>
+
+            <!-- Structured Mini-FAQ Section -->
+            <div class="faq-section">
+                <h3>FAQs</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-q">How will the product be delivered?</div>
+                    <div class="faq-a">The moment checkout finishes, a unique download link is securely sent straight to your email inbox automatically through Dodo Payments.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Are international credit cards accepted?</div>
+                    <div class="faq-a">Yes. The system securely processes Visa, Mastercard, AMEX, Apple Pay, and Google Pay from anywhere globally.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Are refunds available?</div>
+                    <div class="faq-a">Yes. Refunds are available but only under the condition that you aren't receiving your product and you provide proof of such.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">How can i access my file?</div>
+                    <div class="faq-a">Ensure that you have either a PDF reader or an EPUB reader based on the file type you choose to use.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Disclaimer Section -->
+    <footer class="footer-disclaimer">
+       Copyright &copy; 2026 WANDERLXT. All rights reserved. No part of this publication may be reproduced or transmitted without prior written permission, except for brief written quotations permitted by copyright law. 
+
+
+    </footer>
+
+</body>
+</html>
