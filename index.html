@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Hypertrophy Codex</title>
+    
+    <!-- 1. LOAD THE DODO SDK FROM CDN -->
+<script src="https://unpkg.com"></script>
+
+
     <style>
         /* Modern Design System Tokens - Updated for Dark Mode */
         :root { 
-            --bg-color: #0f172a; /* Dark slate background */ 
-            --card-bg: #1e293b; /* Darker slate card canvas */ 
-            --text-main: #f8fafc; /* Crisp off-white main text */ 
-            --text-muted: #94a3b8; /* Muted grey subtext */ 
-            --primary: #3b82f6; /* Bright blue primary button */ 
-            --primary-hover: #60a5fa; /* Lighter blue hover state */ 
-            --accent: #34d399; /* Vibrant green accent checkmarks */ 
-            --border: #334155; /* Soft slate borders */ 
+            --bg-color: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-main: #f8fafc; 
+            --text-muted: #94a3b8; 
+            --primary: #3b82f6; 
+            --primary-hover: #60a5fa; 
+            --accent: #34d399; 
+            --border: #334155; 
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1); 
             --radius: 12px; 
         } 
@@ -45,7 +50,7 @@
         
         /* Hero Image Container */ 
         .cover-wrapper { 
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); /* Dark gradient header */ 
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
             padding: 40px 20px; 
             text-align: center; 
             border-bottom: 1px solid var(--border); 
@@ -54,7 +59,7 @@
         /* Image Display Layout Styles */ 
         .book-image { 
             max-width: 100%; 
-            width: 180px; /* Adjust this value to resize your image */ 
+            width: 180px; 
             height: auto; 
             border-radius: 4px 8px 8px 4px; 
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); 
@@ -69,8 +74,8 @@
         
         .tag { 
             display: inline-block; 
-            background: #1e3a8a; /* Deep blue tag background */ 
-            color: #93c5fd; /* Soft blue tag text */ 
+            background: #1e3a8a; 
+            color: #93c5fd; 
             font-size: 0.75rem; 
             font-weight: 700; 
             padding: 4px 10px; 
@@ -109,7 +114,7 @@
             font-weight: 400; 
         } 
         
-        /* High-Conversion Pricing Button */ 
+        /* Fixed: Styling adjusted to perfectly support native button elements */ 
         .btn-checkout { 
             display: block; 
             width: 100%; 
@@ -120,10 +125,11 @@
             border-radius: var(--radius); 
             font-size: 1.1rem; 
             font-weight: 600; 
-            text-decoration: none; 
+            border: none;
             box-shadow: 0 4px 14px rgba(59, 130, 246, 0.2); 
             transition: all 0.2s ease; 
             margin-bottom: 16px; 
+            cursor: pointer;
         } 
         
         .btn-checkout:hover { 
@@ -139,7 +145,7 @@
             gap: 8px; 
             font-size: 0.8rem; 
             color: var(--text-muted); 
-            background: #1e293b; /* Dark background for trust banner */ 
+            background: #1e293b; 
             padding: 12px; 
             border-radius: 8px; 
             margin-bottom: 30px; 
@@ -209,35 +215,30 @@
 <body>
 
     <div class="container">
-        <!-- Hero Image Container -->
         <div class="cover-wrapper">
-            <!-- Replace 'your-image-source.jpg' with your actual cover image path -->
             <img src="Ebook-Cover.png" alt="The Hypertrophy Codex Book Cover" class="book-image">
         </div>
 
-        <!-- Main Content Details -->
         <div class="content">
             <span class="tag">Digital Ebook</span> <span class="tag">PDF</span>
             <h1>The Hypertrophy Codex: Evidence-based training for sustained growth</h1>
             <div class="author">By WANDERLXT</div>
 
-            <div class="price-tag">$10.00 <span>USD</span></div>
+            <div class="price-tag">$11.99 <span>USD</span></div>
 
-            <a href="#" class="btn-checkout">Buy</a>
+            <!-- 2. FIXED: CHANGED FROM LINK TO ACTUAL ACTION BUTTON -->
+            <a href="https://test.checkout.dodopayments.com/buy/pdt_0Nmb8c5QOVjFs6yrDWcaT?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F"<button id="buy-button" class="btn-checkout">Buy</button> </a>
 
-            <!-- MoR Safety Trust Notice -->
             <div class="trust-banner">
                 <span>🔒 Secure Global Card Checkout via Dodo Payments Merchant of Record</span>
             </div>
 
-            <!-- Bullet Features Layout -->
             <ul class="features-list">
                 <li>Instant File Access: Receive your PDF & EPUB download files securely immediately after purchase.</li>
                 <li>Universal Format: Formatted cleanly for seamless reading on smartphones, tablets, Kindles, and laptops.</li>
                 <li>Actionable Blueprint: Comprehensive guide to muscle building for beginner and intermediate bodybuilders.</li>
             </ul>
 
-            <!-- Structured Mini-FAQ Section -->
             <div class="faq-section">
                 <h3>FAQs</h3>
                 
@@ -264,12 +265,31 @@
         </div>
     </div>
 
-    <!-- Copyright Disclaimer Section -->
     <footer class="footer-disclaimer">
        Copyright &copy; 2026 WANDERLXT. All rights reserved. No part of this publication may be reproduced or transmitted without prior written permission, except for brief written quotations permitted by copyright law. 
-
-
     </footer>
+
+    <!-- 3. FIXED ENGINE BLOCK TO BLOCK JUMPING ENTIRELY -->
+    <script>
+        if (typeof DodoPaymentsCheckout !== 'undefined') {
+            DodoPaymentsCheckout.DodoPayments.Initialize({
+            mode: "test", 
+            displayType: "overlay" 
+        }); 
+
+        document.getElementById('buy-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            DodoPaymentsCheckout.DodoPayments.Checkout.open({ 
+                // IMPORTANT: Replace this placeholder text completely with your new active dashboard URL
+                checkoutUrl: "https://test.checkout.dodopayments.com/buy/pdt_0Nmb8c5QOVjFs6yrDWcaT?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F" 
+            });
+        });
+            } else 
+    { console.log("Dodo Library blocked by editor sandbox. Falling back to secure redirect link for preview mode."); 
+        
+    }
+    </script>
 
 </body>
 </html>
