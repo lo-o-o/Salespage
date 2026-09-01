@@ -226,8 +226,9 @@
 
             <div class="price-tag">$11.99 <span>USD</span></div>
 
-            <!-- 2. FIXED: CHANGED FROM LINK TO ACTUAL ACTION BUTTON -->
-            <a href="https://test.checkout.dodopayments.com/buy/pdt_0Nmb8c5QOVjFs6yrDWcaT?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F"<button id="buy-button" class="btn-checkout">Buy</button> </a>
+                <button onclick="openDodoCheckout()" class="btn-checkout">Buy</button>
+
+
 
             <div class="trust-banner">
                 <span>🔒 Secure Global Card Checkout via Dodo Payments Merchant of Record</span>
@@ -267,27 +268,30 @@
 
     <footer class="footer-disclaimer">
        Copyright &copy; 2026 WANDERLXT. All rights reserved. No part of this publication may be reproduced or transmitted without prior written permission, except for brief written quotations permitted by copyright law. 
-    </footer>
-
-        <!-- FORCES DODO NATIVE OVERLAY MODAL WINDOW LOAD -->
+    
     <script>
-        // 1. Initialize the overlay library engine parameters
-        DodoPaymentsCheckout.DodoPayments.Initialize({ 
-            mode: "test", // Change to "live" when ready for real sales
-            displayType: "overlay" 
-        }); 
-
-        // 2. Attach clean, non-redirect trigger to your buy button
-        document.getElementById('buy-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            DodoPaymentsCheckout.DodoPayments.Checkout.open({ 
-                // Double check that your real copied link from Dodo sits here
-                checkoutUrl: "https://test.checkout.dodopayments.com/buy/pdt_0Nmb8c5QOVjFs6yrDWcaT?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F" 
-            });
-        });
+        function openDodoCheckout() {
+            // Check if the script library is blocked entirely by security
+            if (typeof DodoPaymentsCheckout !== 'undefined') {
+                
+                // Initialize the popup engine instantly on click
+                DodoPaymentsCheckout.DodoPayments.Initialize({ 
+                    mode: "test", // Switch this from "test" to "live" when you go live!
+                    displayType: "overlay"
+                }); 
+                
+                // Slide open the secure overlay panel cleanly over your slate design
+                DodoPaymentsCheckout.DodoPayments.Checkout.open({ 
+                    checkoutUrl: "https://test.checkout.dodopayments.com/buy/pdt_0Nmb8c5QOVjFs6yrDWcaT?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F" 
+                });
+                
+            } else {
+                // If an adblocker or sandbox actively killed the script, seamlessly redirect them so you never lose the sale
+                window.open("https://test.checkout.dodopayments.com/buy/pdt_0Nmb8c5QOVjFs6yrDWcaT?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F", "_blank");
+            }
+        }
     </script>
+
 
 
 </body>
