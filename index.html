@@ -269,27 +269,26 @@
        Copyright &copy; 2026 WANDERLXT. All rights reserved. No part of this publication may be reproduced or transmitted without prior written permission, except for brief written quotations permitted by copyright law. 
     </footer>
 
-    <!-- 3. FIXED ENGINE BLOCK TO BLOCK JUMPING ENTIRELY -->
+        <!-- FORCES DODO NATIVE OVERLAY MODAL WINDOW LOAD -->
     <script>
-        if (typeof DodoPaymentsCheckout !== 'undefined') {
-            DodoPaymentsCheckout.DodoPayments.Initialize({
-            mode: "test", 
+        // 1. Initialize the overlay library engine parameters
+        DodoPaymentsCheckout.DodoPayments.Initialize({ 
+            mode: "test", // Change to "live" when ready for real sales
             displayType: "overlay" 
         }); 
 
+        // 2. Attach clean, non-redirect trigger to your buy button
         document.getElementById('buy-button').addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+            e.preventDefault();
+            e.stopPropagation();
+            
             DodoPaymentsCheckout.DodoPayments.Checkout.open({ 
-                // IMPORTANT: Replace this placeholder text completely with your new active dashboard URL
+                // Double check that your real copied link from Dodo sits here
                 checkoutUrl: "https://test.checkout.dodopayments.com/buy/pdt_0Nmb8c5QOVjFs6yrDWcaT?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F" 
             });
         });
-            } else 
-    { console.log("Dodo Library blocked by editor sandbox. Falling back to secure redirect link for preview mode."); 
-        
-    }
     </script>
+
 
 </body>
 </html>
