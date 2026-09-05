@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Hypertrophy Codex</title>
-    
-    <!-- 1. FIXED: ENTIRELY WORKING UNBLOCKED CDN FILE LINK PATH -->
-    <script src="https://unpkg.com"></script>
 
     <style>
         /* Modern Design System Tokens - Updated for Dark Mode */
@@ -47,7 +44,6 @@
             overflow: hidden; 
         } 
         
-        /* Hero Image Container */ 
         .cover-wrapper { 
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
             padding: 40px 20px; 
@@ -55,7 +51,6 @@
             border-bottom: 1px solid var(--border); 
         } 
         
-        /* Image Display Layout Styles */ 
         .book-image { 
             max-width: 100%; 
             width: 180px; 
@@ -66,7 +61,6 @@
             margin: 0 auto; 
         } 
         
-        /* Main Content Details */ 
         .content { 
             padding: 30px 24px; 
         } 
@@ -113,7 +107,6 @@
             font-weight: 400; 
         } 
         
-        /* High-Conversion Pricing Button */ 
         .btn-checkout { 
             display: block; 
             width: 100%; 
@@ -136,7 +129,6 @@
             transform: translateY(-1px); 
         } 
         
-        /* MoR Safety Trust Notice */ 
         .trust-banner { 
             display: flex; 
             align-items: center; 
@@ -151,7 +143,6 @@
             border: 1px solid var(--border); 
         } 
         
-        /* Bullet Features Layout */ 
         .features-list { 
             list-style: none; 
             margin-bottom: 30px; 
@@ -163,7 +154,7 @@
             margin-bottom: 14px; 
             font-size: 0.95rem; 
             color: var(--text-muted); 
-            } 
+        } 
             
         .features-list li::before { 
             content: "✓"; 
@@ -175,7 +166,6 @@
             top: -2px; 
         } 
         
-        /* Structured Mini-FAQ Section */ 
         .faq-section { 
             border-top: 1px solid var(--border); 
             padding-top: 24px; 
@@ -201,7 +191,6 @@
             color: var(--text-muted); 
         } 
 
-        /* Copyright Footer Styles */
         .footer-disclaimer {
             text-align: center;
             padding: 30px 15px 10px 15px;
@@ -263,25 +252,25 @@
         </div>
     </div>
 
-    <!-- FIXED: SEALED THE DISMISSAL FOOTER CONTAINER CORRECTLY -->
     <footer class="footer-disclaimer">
        Copyright &copy; 2026 WANDERLXT. All rights reserved. No part of this publication may be reproduced or transmitted without prior written permission, except for brief written quotations permitted by copyright law. 
     </footer>
 
-    <!-- FIXED: RE-INJECTED TERMINAL CLOSING PARAMETERS IN STRING LITERALS -->
+    <!-- Dodo Payments SDK (Correctly Loaded) -->
+    <script src="https://checkout.dodopayments.com/sdk.js"></script>
+
+    <!-- Checkout Logic (Fixed) -->
     <script>
         function openDodoCheckout() {
-            if (typeof DodoPaymentsCheckout !== 'undefined') {
-                
+            if (typeof DodoPaymentsCheckout !== 'undefined' && DodoPaymentsCheckout.DodoPayments) {
                 DodoPaymentsCheckout.DodoPayments.Initialize({ 
                     mode: "live", 
                     displayType: "overlay"
                 }); 
                 
                 DodoPaymentsCheckout.DodoPayments.Checkout.open({ 
-                    checkoutUrl: "https://checkout.dodopayments.com/buy/pdt_0Nmg9B8oRxYQpIdjuSBQJ?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F" 
+                    checkoutUrl: "https://checkout.dodopayments.com/buy/pdt_0Nmg9B8oRxYQpIdjuSBQJ?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F"
                 });
-                
             } else {
                 window.open("https://checkout.dodopayments.com/buy/pdt_0Nmg9B8oRxYQpIdjuSBQJ?quantity=1&redirect_url=https://wanderlxt.github.io%2FSalespage%2F");
             }
